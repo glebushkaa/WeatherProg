@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="city">City</string>
+    <string name="select_city">Select city</string>
+    <string name="new_city">Add city</string>
+
+    <string name="precip_probability">\t Probability of precipitation: \n\t</string>
+    <string name="windSpeed">\t Wind speed:\n\t </string>
+    <string name="humidity"> <font color='#424242 '>\t Humidity:\n\t</font></string>
+    <string name="pressure">\t Pressure:\n\t </string>
+    <string name="feelsLike">Feels like:\t</string>
+    <string name="minAndMax">\t Min/Max:\t</string>
+    <string name="today">Today</string>
+    <string name="another_days">Another days</string>
+
+    <string name="monday">Mon</string>
+    <string name="tuesday">Tues</string>
+    <string name="wednesday">Wed</string>
+    <string name="thursday">Thur</string>
+    <string name="friday">Fri</string>
+    <string name="saturday">Sat</string>
+    <string name="sunday">Sun</string>
+
+    <string name="monday_full">Monday</string>
+    <string name="tuesday_full">Tuesday</string>
+    <string name="wednesday_full">Wednesday</string>
+    <string name="thursday_full">Thurday</string>
+    <string name="friday_full">Friday</string>
+    <string name="saturday_full">Saturday</string>
+    <string name="sunday_full">Sunday</string>
+
+    <string name="dnipro">Dnipro</string>
+
+    <string name="more">More</string>
+
+    <string name="speed">\tkm/h</string>
+    <string name="mbar" translatable="false">\tmbar</string>
+    <string name="lang">en</string>
+
+    <string name="feels">Feels:</string>
+    <string name="minMax">Min/Max:</string>
+    <string name="wind">Wind speed:\n</string>
+    <string name="precip">Precip. probability:\n</string>
+
+    <string name="set">Set</string>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/all_round_corners.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/bar.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/card_view.xml" value="0.2630208333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/day_selector.xml" value="0.24270833333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/days_frame.xml" value="0.36822916666666666" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/days_selector.xml" value="0.24270833333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/edit_text_line.xml" value="0.22239583333333332" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/edt_bg_normal.xml" value="0.2630208333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/edt_bg_selected.xml" value="0.2630208333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/frame.xml" value="0.22239583333333332" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/ic_city.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/info_corners.xml" value="0.24270833333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/info_left.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/info_right.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/line.xml" value="0.3828125" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/main.xml" value="0.3828125" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/selector.xml" value="0.2630208333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/today_selector.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/tv_rounded_corners.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/wite_stroke.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/layout/abs_layout.xml" value="0.20625" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/layout/activity_more.xml" value="0.25" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/layout/fragment_info.xml" value="0.2265625" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/layout/fragment_scrolling.xml" value="0.3649946638207044" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/layout/fragment_weather.xml" value="0.3019216555801922" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/menu-v26/main_menu.xml" value="0.203125" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/menu/main_menu.xml" value="0.35208333333333336" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/menu/more_info_menu.xml" value="0.290625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:scrollbars="none"
+    tools:context=".InfoFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+        android:id="@+id/bFirstDay"
+            android:clickable="false"
+        android:layout_width="130dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_weight="1"
+        android:alpha="1"
+        android:background="@drawable/info_left"
+        android:text="@string/monday"
+        app:backgroundTint="@null"
+        app:icon="@drawable/cloudy"
+        app:iconSize="40dp"
+            android:textColor="#000000"
+        android:fontFamily="@font/ubuntu_bold"
+        android:textStyle="bold"
+        app:iconTint="@null"
+        app:iconGravity="textTop"
+        app:iconTintMode="multiply"
+        android:gravity="top|center"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bSecondDay"
+        android:clickable="false"
+        android:layout_width="130dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginEnd="0dp"
+        android:alpha="1"
+        app:backgroundTint="@null"
+        android:textColor="#000000"
+        android:fontFamily="@font/ubuntu_bold"
+        android:textStyle="bold"
+        app:icon="@drawable/sun"
+        app:iconSize="40dp"
+        app:iconGravity="textTop"
+        app:iconTintMode="multiply"
+        app:iconTint="@null"
+        android:background="#CBCBCB"
+        android:text="@string/tuesday"
+        android:gravity="top|center"
+        />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bThirdDay"
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="1"
+            android:alpha="1"
+            android:background="#CBCBCB"
+            android:clickable="false"
+            android:fontFamily="@font/ubuntu_bold"
+            android:gravity="top|center"
+            android:text="@string/wednesday"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:icon="@drawable/rain"
+            app:iconGravity="textTop"
+            app:iconSize="40dp"
+            app:iconTint="@null"
+            app:iconTintMode="multiply" />
+
+        <com.google.android.material.button.MaterialButton
+        android:id="@+id/bFourthDay"
+            android:clickable="false"
+        android:layout_width="130dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginEnd="0dp"
+        app:iconTint="@null"
+            android:textColor="#000000"
+        android:fontFamily="@font/ubuntu_bold"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:icon="@drawable/lighting"
+        app:iconSize="40dp"
+        app:iconGravity="textTop"
+        app:iconTintMode="multiply"
+        android:alpha="1"
+        android:background="#CBCBCB"
+        android:text="@string/thursday"
+        android:gravity="top|center"
+        />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/more"
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconTint="@null"
+            android:fontFamily="@font/ubuntu_bold"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            android:alpha="1"
+            android:textSize="13sp"
+            android:background="@drawable/info_right"
+            android:text="@string/more"
+            android:textColor="#000000"
+            android:gravity="center" />
+
+    </LinearLayout>
+</HorizontalScrollView>

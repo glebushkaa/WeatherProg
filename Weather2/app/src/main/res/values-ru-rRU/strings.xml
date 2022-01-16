@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="city">Город</string>
+    <string name="new_city">Добавить город</string>
+    <string name="select_city">Выбрать город</string>
+    <string name="precip_probability">\t Вероятность осадков:\n\t</string>
+    <string name="windSpeed">\t Скорость ветра:\n\t</string>
+    <string name="humidity"><font color='#424242 '>\t Влажность:\n\t</font></string>
+    <string name="pressure">\t Давление:\n\t</string>
+    <string name="feelsLike">Чуствуеться как:\t</string>
+    <string name="minAndMax">\t Мин/Макс:\n\t </string>
+    <string name="today">Сегодня</string>
+    <string name="another_days">Другие дни</string>
+
+    <string name="monday">Пн</string>
+    <string name="tuesday">Вт</string>
+    <string name="wednesday">Ср</string>
+    <string name="thursday">Чт</string>
+    <string name="friday">Пт</string>
+    <string name="saturday">Сб</string>
+    <string name="sunday">Вс</string>
+
+    <string name="monday_full">Понедельник</string>
+    <string name="tuesday_full">Вторник</string>
+    <string name="wednesday_full">Среда</string>
+    <string name="thursday_full">Четверг</string>
+    <string name="friday_full">Пятница</string>
+    <string name="saturday_full">Суббота</string>
+    <string name="sunday_full">Воскресенье</string>
+
+    <string name="feels">Чуствуется:</string>
+    <string name="minMax">Мин/Макс:</string>
+    <string name="wind">Скорость ветра:\n</string>
+    <string name="precip">Вероятность осадков:\n</string>
+
+    <string name="dnipro">Днепр</string>
+
+    <string name="more">Подробнее</string>
+
+    <string name="speed">\tкм/ч</string>
+    <string name="lang">ru</string>
+
+    <string name="set">Применить</string>
+</resources>
