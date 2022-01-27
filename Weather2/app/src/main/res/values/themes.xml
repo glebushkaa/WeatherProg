@@ -11,7 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="android:windowFullscreen">true</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@null</item>
+        <item name="android:statusBarColor" tools:targetApi="l">#8000FF</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="iconTintMode">multiply</item>
         <item name="actionBarStyle">@style/ThemeActionBar</item>

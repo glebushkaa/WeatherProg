@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@null</item>
+        <item name="android:statusBarColor" tools:targetApi="l">#8000FF</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="actionBarStyle">@style/ThemeActionBar</item>
         <item name="windowActionBarOverlay">true</item>

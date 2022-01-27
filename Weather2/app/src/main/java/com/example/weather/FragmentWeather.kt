@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import changers.OptionsSetter
 import com.example.weather.databinding.FragmentWeatherBinding
 
 class FragmentWeather : Fragment() {
@@ -36,7 +37,7 @@ class FragmentWeather : Fragment() {
         }
         dataModel.clickabilityButtons.observe(this,{
             binding.apply{
-                optionsSetter.setClickability(arrayOf(bAnotherDays,bToday),it)
+                optionsSetter.setClickable(arrayOf(bAnotherDays,bToday),it)
             }
         })
 

@@ -4,7 +4,7 @@
     <string name="select_city">Select city</string>
     <string name="new_city">Add city</string>
 
-    <string name="precip_probability">\t Probability of precipitation: \n\t</string>
+    <string name="precip_probability">\t Prob. of precipitation: \n\t</string>
     <string name="windSpeed">\t Wind speed:\n\t </string>
     <string name="humidity"> <font color='#424242 '>\t Humidity:\n\t</font></string>
     <string name="pressure">\t Pressure:\n\t </string>
@@ -43,4 +43,9 @@
     <string name="precip">Precip. probability:\n</string>
 
     <string name="set">Set</string>
+
+    <string name="turn_on_internet">Turn on the internet please!</string>
+
+    <string name="egg">And why are you doing this????!!  (•̀o•́)ง</string>
+    <string name="work">It doesn\'t work yet </string>
 </resources>

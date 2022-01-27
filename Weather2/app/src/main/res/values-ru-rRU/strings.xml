@@ -42,4 +42,8 @@
     <string name="lang">ru</string>
 
     <string name="set">Применить</string>
+
+    <string name="turn_on_internet">Включите интернет,пожалуйста!</string>
+    <string name="egg">И зачем ты это делаешь????!!  (•̀o•́)ง</string>
+    <string name="work">Это пока не работает </string>
 </resources>

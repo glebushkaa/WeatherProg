@@ -3,27 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="match_parent"
     android:orientation="horizontal"
     android:scrollbars="none"
     tools:context=".InfoFragment">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
         android:id="@+id/bFirstDay"
             android:clickable="false"
-        android:layout_width="130dp"
+        android:layout_width="150dp"
         android:layout_height="match_parent"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
-        android:layout_weight="1"
         android:alpha="1"
-        android:background="@drawable/info_left"
-        android:text="@string/monday"
+        android:background="#FFFFFF"
         app:backgroundTint="@null"
         app:icon="@drawable/cloudy"
         app:iconSize="40dp"
@@ -33,13 +31,15 @@
         app:iconTint="@null"
         app:iconGravity="textTop"
         app:iconTintMode="multiply"
-        android:gravity="top|center"
+        android:gravity="bottom|center"
+            android:paddingTop="20dp"
+        android:paddingBottom="35dp"
         />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bSecondDay"
         android:clickable="false"
-        android:layout_width="130dp"
+        android:layout_width="150dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_marginEnd="0dp"
@@ -53,23 +53,25 @@
         app:iconGravity="textTop"
         app:iconTintMode="multiply"
         app:iconTint="@null"
-        android:background="#CBCBCB"
-        android:text="@string/tuesday"
-        android:gravity="top|center"
+        android:background="#FFFFFF"
+        android:gravity="bottom|center"
+        android:paddingTop="20dp"
+        android:paddingBottom="35dp"
         />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bThirdDay"
-            android:layout_width="130dp"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="0dp"
             android:layout_weight="1"
             android:alpha="1"
-            android:background="#CBCBCB"
+            android:background="#FFFFFF"
             android:clickable="false"
             android:fontFamily="@font/ubuntu_bold"
-            android:gravity="top|center"
-            android:text="@string/wednesday"
+            android:gravity="bottom|center"
+            android:paddingTop="20dp"
+            android:paddingBottom="35dp"
             android:textColor="#000000"
             android:textStyle="bold"
             app:backgroundTint="@null"
@@ -82,7 +84,7 @@
         <com.google.android.material.button.MaterialButton
         android:id="@+id/bFourthDay"
             android:clickable="false"
-        android:layout_width="130dp"
+        android:layout_width="150dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_marginEnd="0dp"
@@ -96,14 +98,15 @@
         app:iconGravity="textTop"
         app:iconTintMode="multiply"
         android:alpha="1"
-        android:background="#CBCBCB"
-        android:text="@string/thursday"
-        android:gravity="top|center"
+            android:gravity="bottom|center"
+            android:paddingTop="20dp"
+            android:paddingBottom="35dp"
+        android:background="#FFFFFF"
         />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/more"
-            android:layout_width="130dp"
+            android:id="@+id/bMoreInfo"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:iconTint="@null"
@@ -112,10 +115,16 @@
             app:backgroundTint="@null"
             android:alpha="1"
             android:textSize="13sp"
-            android:background="@drawable/info_right"
+            android:background="#FFFFFF"
             android:text="@string/more"
             android:textColor="#000000"
-            android:gravity="center" />
+            app:icon="@drawable/more"
+            app:iconSize="40dp"
+            app:iconGravity="textTop"
+            app:iconTintMode="multiply"
+            android:gravity="bottom|center"
+            android:paddingTop="20dp"
+            android:paddingBottom="35dp" />
 
     </LinearLayout>
 </HorizontalScrollView>

@@ -1,41 +1,41 @@
 package com.example.weather
-import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.location.Geocoder
-import android.net.Uri
-import android.os.*
-import android.provider.Settings
-import android.util.Log
-import android.view.*
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import changers.Changer
+import changers.OptionsSetter
 import com.example.weather.databinding.ActivityMainBinding
-import com.google.android.gms.location.*
-import kotlinx.coroutines.*
-import org.json.JSONObject
-import java.net.*
+import database.DbManager
+import internet.InternetChecker
+import json.JsonGetter
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.*
-import kotlin.math.roundToInt
 
 
 @DelicateCoroutinesApi
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     private val dataModel : DataModel by viewModels()
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private lateinit var optionsSetter: OptionsSetter
-
-    private var key = "T7PEM7NY88TBKV729S2VSLMQA"
     private var city = ""
-    private var url : String = ""
+
+    private val optionsSetter = OptionsSetter()
+    private val changer = Changer()
+    private val internetChecker = InternetChecker()
+    private lateinit var json : JsonGetter
+
+    private val db = DbManager(this)
+
+    private var infoArray = arrayListOf("","","","","","","","")
 
     private var daysDates = Array(4) { Array(2) {""} }
 
@@ -46,26 +46,32 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = null
         addFragment(FragmentWeather.newInstance(),R.id.dayFragment)
         addFragment(InfoFragment.newInstance(),R.id.info_fragment)
+
         dataModel.visibilityInfoTv.observe(this,{
             binding.infoTv.visibility = it
         })
         dataModel.visibilityInfoFragment.observe(this,{
             binding.infoFragment.visibility = it
         })
-        optionsSetter = OptionsSetter()
+        db.openDb()
+        if(db.checkIsDbEmpty()){
+            var index = 0
+                while (index != 8){
+                    infoArray[index] = db.readDb()[index]
+                    index++
+                }
+            city = infoArray[0]
+                setInfo(true)
+            }
+        getLastLocation()
         setOnClickListeners()
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        if (!checkPermissions()) {
-            startLocationPermissionRequest()
-        }
-        else {
-            getLastLocation()
-        }
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu,menu)
         return super.onCreateOptionsMenu(menu)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.new_city){
             when(binding.cityField.visibility){
@@ -82,15 +88,13 @@ class MainActivity : AppCompatActivity() {
         }
         return true
     }
-
     @DelicateCoroutinesApi
     private fun setOnClickListeners(){
         binding.bCity.setOnClickListener{
             if(binding.editCity.text != null){
                 city = binding.editCity.text.toString()
-                GlobalScope.launch (Dispatchers.IO){
-                    doInBackground()
-                    setInfo()
+                GlobalScope.launch (Dispatchers.IO) {
+                    setInfo(false)
                 }
             }
             setVisibilityKeyboard()
@@ -99,92 +103,31 @@ class MainActivity : AppCompatActivity() {
             dataModel.clickabilityButtons.value = true
         }
     }
-
-    private fun setVisibilityKeyboard(){
-        val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_PERMISSIONS_REQUEST_CODE) {
-            when {
-                grantResults.isEmpty() -> {
-                    Log.i(TAG, "User interaction was cancelled.")
-                }
-                grantResults[0] == PackageManager.PERMISSION_GRANTED -> {
-                    getLastLocation()
-                }
-                else -> {
-                    View.OnClickListener {
-                        val intent = Intent()
-                        intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                        val uri = Uri.fromParts("package",
-                            BuildConfig.APPLICATION_ID, null)
-                        intent.data = uri
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                        startActivity(intent)
-                    }
-                }
-            }
-        }
-    }
-    private fun startLocationPermissionRequest() {
-        ActivityCompat.requestPermissions(this@MainActivity,
-            arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION),
-            REQUEST_PERMISSIONS_REQUEST_CODE)
-    }
-    private fun checkPermissions(): Boolean {
-        val permissionState = ActivityCompat.checkSelfPermission(this,
-            Manifest.permission.ACCESS_COARSE_LOCATION)
-        return permissionState == PackageManager.PERMISSION_GRANTED
-    }
-
-    private fun getCityByLocation(context: Context, longtitude : Double, latitude : Double){
-        GlobalScope.launch (Dispatchers.IO){
-        val geocoder = Geocoder(context,Locale.ENGLISH)
-        val addresses = geocoder.getFromLocation(latitude,longtitude,1)
-        if (addresses.size > 0) {
-            city = addresses[0].locality
-                doInBackground()
-                setInfo()
-        }
-        }
-    }
-
     private fun getLastLocation() {
-
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            return
+        if(internetChecker.isOnline(this) && db.checkIsDbEmpty()){
+            GlobalScope.launch(Dispatchers.IO) {
+                setInfo(false)
+            }
         }
-        fusedLocationClient.lastLocation
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful && task.result != null) {
-                    getCityByLocation(
-                        this,
-                        task.result.longitude,
-                        task.result.latitude
-                    )
-                }
-                else {
-                    GlobalScope.launch(Dispatchers.IO) {
-                        delay(1000L)
-                        GlobalScope.launch(Dispatchers.Main) {
-                            optionsSetter.setVisibilityView(arrayOf(binding.dark, binding.cityField), View.VISIBLE)
-                            setVisibilityKeyboard()
-                        }
+        else if (internetChecker.isOnline(this)) {
+            setCityFieldVisible()
+        }
+        else{
+            Toast.makeText(this, getString(R.string.turn_on_internet), Toast.LENGTH_LONG)
+                .show()
+            GlobalScope.launch(Dispatchers.IO){
+                while(true) {
+                    if (internetChecker.isOnline(this@MainActivity) && db.checkIsDbEmpty()) {
+                        setInfo(false)
+                        break
+                    } else if (internetChecker.isOnline(this@MainActivity) && !db.checkIsDbEmpty()) {
+                        setCityFieldVisible()
+                        break
                     }
                 }
             }
+        }
     }
-
     private fun addFragment(fragment : Fragment, id : Int){
         supportFragmentManager
             .beginTransaction()
@@ -192,67 +135,62 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    companion object {
-        private const val TAG = "LocationProvider"
-        private const val REQUEST_PERMISSIONS_REQUEST_CODE = 34
-    }
 
-    private fun setBackground(iconName : String, layout : ConstraintLayout){
-        when(iconName){
-            "rain" -> layout.background = AppCompatResources.getDrawable(this,R.drawable.cloudy_back)
-            "snow" -> layout.background = AppCompatResources.getDrawable(this,R.drawable.sunny_back)
-            "partly-cloudy-day" -> layout.background = AppCompatResources.getDrawable(this,R.drawable.foggy_back)
-            "cloudy" -> layout.background = AppCompatResources.getDrawable(this,R.drawable.cloudy_back)
-            "clear-day" -> layout.background = AppCompatResources.getDrawable(this,R.drawable.sunny_back)
-            "wind" -> layout.background = AppCompatResources.getDrawable(this,R.drawable.foggy_back)
+    private fun setInfo(isDb : Boolean){
+        try{
+            if(!isDb){
+                json = JsonGetter(getString(R.string.lang),city,infoArray[0])
+                infoArray = json.setArrayInfo()
+                setDatesAndIconsForAnotherDays()
+            }
+            setTextAndIconsForMainActivity()
+
+            if(!db.checkIsDbEmpty()) db.insertDb(infoArray)
+            else db.updateDb(infoArray)
         }
-    }
-
-    private fun doInBackground(){
-        url = try {
-            URL(
-                "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/$city?unitGroup=metric&include=days%2Ccurrent&key=$key&contentType=json"
-            ).readText(Charsets.UTF_8)
-        } catch (e : Exception){
-            "" }
+        catch (e : Exception){}
     }
     @SuppressLint("SetTextI18n")
-    private fun setInfo(){
-        try {
-            val currentJsonObj = JSONObject(url).getJSONObject("currentConditions")
-            val mainJsonObj = JSONObject(url).getJSONArray("days").getJSONObject(0)
-            val anotherJsonObj = JSONObject(url).getJSONArray("days")
-            GlobalScope.launch(Dispatchers.Main) {
-                setBackground(currentJsonObj.getString("icon"),binding.background)
-            }
-            binding.apply {
-                mainText.text = "\t\t\t${currentJsonObj.getDouble("temp").roundToInt()}°"
-                bHumidity.text = getString(R.string.humidity) + currentJsonObj.getString("humidity") + "%"
-                bWindSpeed.text = getString(R.string.windSpeed) + currentJsonObj.getString("windspeed") + getString(R.string.speed)
-                bPrecipProb.text = getString(R.string.precip_probability) + mainJsonObj.getString("precipprob") + "%"
-                bPressure.text = getString(R.string.pressure) + + currentJsonObj.getDouble("pressure").roundToInt() + getString(R.string.mbar)
-                textView.text = JSONObject(url).getString("address")
-                additionalInfo.text = "${getString(R.string.feelsLike)} ${currentJsonObj.getString("feelslike")}° ®"
-            }
-            GlobalScope.launch(Dispatchers.Main) {
-                val delimiter = "-"
-                var num = 1
-                while(num != 5){
-                    val date = anotherJsonObj.getJSONObject(num).getString("datetime")
-                    val icon = anotherJsonObj.getJSONObject(num).getString("icon")
-                    val dateArray = date.split(delimiter)
-                   daysDates[num-1][0] = dateArray[2] + "." + dateArray[1]
-                    daysDates[num-1][1] = icon
-                    num++
-                }
-               dataModel.daysInfo.value = daysDates
-               dataModel.cityName.value = city
-            }
-        } catch (e: Exception) {
-
+    private fun setTextAndIconsForMainActivity(){
+        binding.apply {
+            tvCity.text = infoArray[0]
+            tvTemp.text = infoArray[1]
+            tvFeelsTemp.text = "${getString(R.string.feelsLike)} ${infoArray[2]}"
+            bWindSpeed.text = getString(R.string.windSpeed) + infoArray[3] + getString(R.string.speed)
+            bPrecipProbability.text = getString(R.string.precip_probability) + infoArray[4] + "%"
+            bPressure.text = getString(R.string.pressure) + infoArray[5] + getString(R.string.mbar)
+            bHumidity.text = getString(R.string.humidity) + infoArray[6] + "%"
+            changer.setCurrentWeatherIcon(infoArray[7],binding.ivTodayWeather,this@MainActivity)
         }
     }
 
+    private fun setDatesAndIconsForAnotherDays(){
+        try{
+            json = JsonGetter(getString(R.string.lang),city,infoArray[0])
+            daysDates = json.setIconsAndTextDays()
+            GlobalScope.launch(Dispatchers.Main) {
+                dataModel.daysInfo.value = daysDates
+                dataModel.cityName.value = city
+                dataModel.recentCity.value = infoArray[0]
+            }
+        }
+        catch (e : Exception){}
+    }
 
+    private fun setCityFieldVisible() {
+        GlobalScope.launch(Dispatchers.Main) {
+            optionsSetter.setVisibilityView(
+                arrayOf(
+                    binding.dark,
+                    binding.cityField
+                ), View.VISIBLE
+            )
+            setVisibilityKeyboard()
+        }
+    }
+
+    private fun setVisibilityKeyboard() =
+        (this.getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager)!!
+            .toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
 }
 

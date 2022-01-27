@@ -5,26 +5,42 @@
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sunny_back"
+    android:background="#8000FF"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/ivTodayWeather"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/ic_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription">
+    </ImageView>
+
     <TextView
-        android:id="@+id/mainText"
+        android:id="@+id/tvTemp"
         android:layout_width="200dp"
         android:layout_height="124dp"
         android:layout_gravity="top|center"
         android:fontFamily="@font/open_sans_extrabold"
         android:gravity="center|bottom"
+        android:paddingStart="20dp"
         android:textColor="#FFFFFF"
         android:textSize="80sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169" />
+        app:layout_constraintVertical_bias="0.342"
+        tools:ignore="RtlSymmetry" />
+
     <TextView
-        android:id="@+id/additionalInfo"
+        android:id="@+id/tvFeelsTemp"
         android:layout_width="200dp"
         android:layout_height="20dp"
         android:layout_marginTop="0dp"
@@ -32,15 +48,14 @@
         android:textColor="#FFFFFF"
         android:fontFamily="@font/open_sans_extrabold"
         android:gravity="center"
-        app:layout_constraintEnd_toEndOf="@+id/mainText"
-        app:layout_constraintStart_toStartOf="@+id/mainText"
-        app:layout_constraintTop_toBottomOf="@+id/mainText" />
+        app:layout_constraintEnd_toEndOf="@+id/tvTemp"
+        app:layout_constraintStart_toStartOf="@+id/tvTemp"
+        app:layout_constraintTop_toBottomOf="@+id/tvTemp" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_height="220dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +73,7 @@
         <LinearLayout
             android:id="@+id/info_tv"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:baselineAligned="false"
             android:orientation="horizontal">
 
@@ -68,37 +83,47 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatButton
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/bWindSpeed"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:alpha="1"
-                    android:background="#CBCBCB"
+                    android:background="#FFFFFF"
                     android:clickable="false"
                     android:fontFamily="@font/ubuntu_bold"
-                    android:gravity="center"
                     android:text="@string/windSpeed"
                     android:textAllCaps="false"
                     android:textColor="#000000"
-                    app:backgroundTint="@null">
-                </androidx.appcompat.widget.AppCompatButton>
+                    app:backgroundTint="@null"
+                    app:icon="@drawable/windspeed"
+                    app:iconGravity="start"
+                    app:iconSize="30dp"
+                    app:iconTint="@null"
+                    app:iconTintMode="multiply">
+                </com.google.android.material.button.MaterialButton>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/b_precip_prob"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bPrecipProbability"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="0dp"
+                    android:layout_weight="1"
                     android:alpha="1"
-                    android:background="@drawable/info_left"
+                    android:background="#FFFFFF"
                     android:clickable="false"
                     android:fontFamily="@font/ubuntu_bold"
                     android:gravity="center"
                     android:text="@string/precip_probability"
                     android:textAllCaps="false"
                     android:textColor="#000000"
-                    app:backgroundTint="@null">
-                </androidx.appcompat.widget.AppCompatButton>
+                    app:backgroundTint="@null"
+                    app:icon="@drawable/precipitation"
+                    app:iconGravity="start"
+                    app:iconSize="30dp"
+                    app:iconTint="@null"
+                    app:iconTintMode="multiply">
+                </com.google.android.material.button.MaterialButton>
 
 
             </LinearLayout>
@@ -109,37 +134,49 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatButton
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/bPressure"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="0dp"
+                    android:layout_weight="1"
                     android:alpha="1"
-                    android:background="#CBCBCB"
+                    android:background="#FFFFFF"
                     android:clickable="false"
                     android:fontFamily="@font/ubuntu_bold"
                     android:gravity="center"
                     android:text="@string/pressure"
                     android:textAllCaps="false"
                     android:textColor="#000000"
-                    app:backgroundTint="@null">
-                </androidx.appcompat.widget.AppCompatButton>
+                    app:backgroundTint="@null"
+                    app:icon="@drawable/pressure"
+                    app:iconGravity="start"
+                    app:iconSize="30dp"
+                    app:iconTint="@null"
+                    app:iconTintMode="multiply">
+                </com.google.android.material.button.MaterialButton>
 
-                <androidx.appcompat.widget.AppCompatButton
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/bHumidity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="0dp"
+                    android:layout_weight="1"
                     android:alpha="1"
-                    android:background="@drawable/info_right"
+                    android:background="#FFFFFF"
                     android:clickable="false"
                     android:fontFamily="@font/ubuntu_bold"
                     android:gravity="center"
                     android:text="@string/humidity"
                     android:textAllCaps="false"
                     android:textColor="#000000"
-                    app:backgroundTint="@null">
-                </androidx.appcompat.widget.AppCompatButton>
+                    app:backgroundTint="@null"
+                    app:icon="@drawable/humidity"
+                    app:iconGravity="start"
+                    app:iconSize="30dp"
+                    app:iconTint="@null"
+                    app:iconTintMode="multiply">
+                </com.google.android.material.button.MaterialButton>
 
             </LinearLayout>
         </LinearLayout>
@@ -147,7 +184,7 @@
         <FrameLayout
             android:id="@+id/info_fragment"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:visibility="gone">
 
         </FrameLayout>
@@ -156,7 +193,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvCity"
         android:layout_width="200dp"
         android:layout_height="30dp"
         android:layout_marginTop="16dp"
@@ -217,6 +254,23 @@
             android:text="@string/set"
             android:textAllCaps="false" />
     </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:id="@+id/select_city"
+        android:layout_width="250dp"
+        android:layout_height="300dp"
+        android:background="@drawable/select_city_shape"
+        android:orientation="vertical"
+        android:scrollbars="none"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.239">
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

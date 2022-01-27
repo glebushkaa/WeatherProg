@@ -13,18 +13,21 @@
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/edt_bg_normal.xml" value="0.2630208333333333" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/edt_bg_selected.xml" value="0.2630208333333333" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/frame.xml" value="0.22239583333333332" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/ic_add.xml" value="0.38385416666666666" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/ic_city.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.38385416666666666" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/info_corners.xml" value="0.24270833333333333" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/info_left.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/info_right.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/line.xml" value="0.3828125" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/main.xml" value="0.3828125" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/select_city_shape.xml" value="0.36822916666666666" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/selector.xml" value="0.2630208333333333" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/today_selector.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/tv_rounded_corners.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/drawable/wite_stroke.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/layout/abs_layout.xml" value="0.20625" />
-        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/layout/activity_more.xml" value="0.25" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/layout/fragment_info.xml" value="0.2265625" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/layout/fragment_scrolling.xml" value="0.3649946638207044" />
@@ -32,6 +35,10 @@
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/menu-v26/main_menu.xml" value="0.203125" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/menu/main_menu.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/menu/more_info_menu.xml" value="0.290625" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/mipmap-anydpi-v26/icon_weather.xml" value="0.38385416666666666" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/mipmap-anydpi-v26/icon_weather_2.xml" value="0.38385416666666666" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/mipmap-anydpi-v26/weather_icon_.xml" value="0.36822916666666666" />
+        <entry key="..\:/Users/38099/AndroidStudioProjects/Weather2/app/src/main/res/mipmap-anydpi-v26/weather_icon__round.xml" value="0.36822916666666666" />
       </map>
     </option>
   </component>

@@ -5,7 +5,7 @@
         android:id="@+id/new_city"
         android:title="@string/new_city"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_add"
+        android:icon="@drawable/ic_city"
         >
     </item>
 </menu>

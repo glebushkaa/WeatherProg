@@ -23,5 +23,9 @@ open class DataModel : ViewModel() {
     val cityName : MutableLiveData<String> by lazy{
         MutableLiveData<String>()
     }
+
+    val recentCity : MutableLiveData<String> by lazy{
+        MutableLiveData<String>()
+    }
 }
 
